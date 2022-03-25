@@ -227,6 +227,7 @@ navigator.onLine
     }
 
     socket.on('newmsg', function(data) {	
+      console.log(data);
         if(data) {	
 
             var messOptions = {
@@ -251,7 +252,7 @@ navigator.onLine
                         },
                     ]
             }
-            regObj.showNotification(`${data.username}`, messOptions);
+            // regObj.showNotification(`${data.username}`, messOptions);
 
             $('#message-container').prepend('<br><div class="col-md-12"> ' + data.status + ' <b>' + data.username + '</b>: ' + data.message + '</div><br>') 	
         }
