@@ -126,6 +126,35 @@ navigator.onLine
   //               }
   //                   // for displaying the notification
   //                   regObj.showNotification(`Hi ${user}, You'll get all the notifications.`, options);
+        // window.Notification.requestPermission()
+        // .then(status => {
+        //     if (window.Notification.permission == 'granted') {
+        //         // displayNotification();
+        //         console.log('Notification permission status:', status);
+        //         options = {
+        //             body:`Notifications for ${user}`,
+        //             icon:'./fakepath/uploads/employee.png',
+        //             vibrate:[100, 50, 100],
+        //             data:{
+        //                 username:user,
+        //                 dateOfArrival:Date.now(),
+        //                 primaryKey:1
+        //             },
+        //             actions:[
+        //                 {
+        //                     action:'Ok',
+        //                     title:'Ok',
+        //                     icon:'./fakepath/uploads/check.png'
+        //                 },
+        //                 {
+        //                     action:'Dismiss',
+        //                     title:'Dismiss',
+        //                     icon:'./fakepath/uploads/close.png'
+        //                 },
+        //             ]
+        //         }
+        //             // for displaying the notification
+        //             regObj.showNotification(`Hi ${user}, You'll get all the notifications.`, options);
 
   //           }else{
   //               console.log('Permission not granted:', status);
