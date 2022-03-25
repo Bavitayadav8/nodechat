@@ -259,6 +259,7 @@ navigator.onLine
     })	
 
     socket.on('newfilesend', function(data){
+      console.log(data);
         if(data){
             for(var j=0; j < data.file.length; j++){
                 for (var key in data.file[j]) {
@@ -276,7 +277,7 @@ navigator.onLine
                               primaryKey:1
                           }
                         }
-                        regObj.showNotification(`${data.username}`, imageOptions);
+                        // regObj.showNotification(`${data.username}`, imageOptions);
                         
                         $('#message-container').prepend('<br><div class="col-md-12"> ' + data.status + ' <b>' + data.username + '</b>: <img src="./fakepath/uploads/' + filename + '" alt="'+filename+'" width="100%" class="image"/></div><br>') 	
                     }
