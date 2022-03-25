@@ -61,19 +61,19 @@ navigator.onLine
         socket.emit('userStatus', {username:user, status:status})
       })
 
-      $(window).on('load', function(){
+    //   $(window).on('load', function(){
 
-        navigator.serviceWorker.register('./fakepath/javascripts/newServiceWorker.js')
+    //     navigator.serviceWorker.register('./fakepath/javascripts/newServiceWorker.js')
 
-        .then( (regObj) => {
-          window.regObj = regObj;
-          console.log('registration success', regObj)
-      })
-      .catch(error => {
-        console.log('registration failed', error)
-      })
+    //     .then( (regObj) => {
+    //       window.regObj = regObj;
+    //       console.log('registration success', regObj)
+    //   })
+    //   .catch(error => {
+    //     console.log('registration failed', error)
+    //   })
 
-    });
+    // });
 
     function setUsername(){	
         socket.emit('setusername', $('#name').val())	
@@ -90,57 +90,58 @@ navigator.onLine
 
     socket.on('userSet', function(data)
     {	
+      console.log(data);
         user = data.username;	
 
         // for push notificcation
-        if('serviceWorker' in navigator){
-          if('PushManager' in window){
+  //       if('serviceWorker' in navigator){
+  //         if('PushManager' in window){
 
-        window.Notification.requestPermission()
-        .then(status => {
-            if (window.Notification.permission == 'granted') {
-                // displayNotification();
-                console.log('Notification permission status:', status);
-                options = {
-                    body:`Notifications for ${user}`,
-                    icon:'./fakepath/uploads/employee.png',
-                    vibrate:[100, 50, 100],
-                    data:{
-                        username:user,
-                        dateOfArrival:date.now(),
-                        primaryKey:1
-                    },
-                    actions:[
-                        {
-                            action:'Ok',
-                            title:'Ok',
-                            icon:'./fakepath/uploads/check.png'
-                        },
-                        {
-                            action:'Dismiss',
-                            title:'Dismiss',
-                            icon:'./fakepath/uploads/close.png'
-                        },
-                    ]
-                }
-                    // for displaying the notification
-                    regObj.showNotification(`Hi ${user}, You'll get all the notifications.`, options);
+  //       window.Notification.requestPermission()
+  //       .then(status => {
+  //           if (window.Notification.permission == 'granted') {
+  //               // displayNotification();
+  //               console.log('Notification permission status:', status);
+  //               options = {
+  //                   body:`Notifications for ${user}`,
+  //                   icon:'./fakepath/uploads/employee.png',
+  //                   vibrate:[100, 50, 100],
+  //                   data:{
+  //                       username:user,
+  //                       dateOfArrival:date.now(),
+  //                       primaryKey:1
+  //                   },
+  //                   actions:[
+  //                       {
+  //                           action:'Ok',
+  //                           title:'Ok',
+  //                           icon:'./fakepath/uploads/check.png'
+  //                       },
+  //                       {
+  //                           action:'Dismiss',
+  //                           title:'Dismiss',
+  //                           icon:'./fakepath/uploads/close.png'
+  //                       },
+  //                   ]
+  //               }
+  //                   // for displaying the notification
+  //                   regObj.showNotification(`Hi ${user}, You'll get all the notifications.`, options);
 
-            }else{
-                console.log('Permission not granted:', status);
-                // so registration will not be done
-            }
-        })
-        .catch(error => {
-            console.log(error)
-        })
+  //           }else{
+  //               console.log('Permission not granted:', status);
+  //               // so registration will not be done
+  //           }
+  //       })
+  //       .catch(error => {
+  //           console.log(error)
+  //       })
 
-    }else{
-        console.log('push manager is not in window')
-    }
-  }else{
-    console.log('service worker is not in navigator')
-  }   
+  //   }else{
+  //       console.log('push manager is not in window')
+  //   }
+  // }else{
+  //   console.log('service worker is not in navigator')
+  // }   
   
         // document.write('Welcome <strong> '+ user + ' </strong>, You can chat now.<br><br>')	
         $('.set-username').css('display', 'none');	
